@@ -1,0 +1,52 @@
+PUBLIC			DELAY
+PUBLIC			KEY
+PUBLIC			SEVEN
+
+ROM				SEGMENT CODE
+RSEG				ROM
+
+
+DELAY:		MOV 	R4,#10   
+D1:			   MOV 	R3,#10   
+D2:			   MOV 	R5,#200   
+	  		   DJNZ	R5,$      
+				DJNZ 	R3,D2     
+			   DJNZ 	R4,D1    
+			   RET
+
+
+
+
+KEY:	  MOV	 R7,#00
+		  MOV	 DPTR,#TABLE_KEY
+LOOP:	  MOV	 A,R7
+		  MOVC	 A,@A+DPTR
+		  XRL	    A,R6
+		  INC	    R7
+		  CJNE   R7,#11,YES  ;避免按到七段沒有的碼
+  		  MOV	 R7,#11
+		  RET
+;七段顯示器順向查表
+SEVEN:	 MOV	DPTR,#TABLE_SEVEN
+		    DEC	R7
+		    MOV	A,R7
+		    MOVC	A,@A+DPTR
+		    RET
+				
+YES:	 JNZ	 LOOP
+		 RET	
+
+		
+;鍵盤編碼
+TABLE_KEY:	
+DB 077H,07BH,07DH,0B7H,0BBH,0BDH,0D7H,0DBH,0DDH,0EBH
+
+
+;七段顯示器編碼
+TABLE_SEVEN:	
+DB	0F9H,0A4H,0B0H,099H,092H,082H,0F8H,080H,098H,0C0H
+DB	086H ;ERROR的符號		
+
+
+
+END	

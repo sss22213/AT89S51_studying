@@ -1,0 +1,17 @@
+ORG	00H
+JMP		START
+START:	MOV	P2,#00H
+		CALL	DELAY_1S
+		MOV	P2,#0FFH
+		CALL	DELAY_1S
+		JMP		START
+
+DELAY_1S:	MOV 	R4,#250  
+D1:			MOV 	R3,#10   
+D2:			MOV 	R5,#200   
+	  		DJNZ	R5,$      
+            DJNZ 	R3,D2     
+			DJNZ 	R4,D1    
+			RET
+END
+

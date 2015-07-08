@@ -1,0 +1,78 @@
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             12/13/2014 19:00:54 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN LCD_TEXT.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD_TEXT.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     EXTRN  CODE(CLEAR_LCD,SET_LCD,WLCD_COMMAND,WLCD_DATA,DELAY_01MS,FLOOK_TABLE)
+                       2     
+0000                   3     ORG     00H
+0000 8000              4     JMP     START
+                       5     
+                       6             
+0002 120000   F        7     START:  CALL            SET_LCD    
+0005 120000   F        8                     CALL            CLEAR_LCD
+                       9     
+0008 7900             10                     MOV     R1,#0
+                      11                     
+000A 7A80             12                     MOV     R2,#080H
+000C 120000   F       13                     CALL    WLCD_COMMAND
+000F 900032           14                     MOV     DPTR,#TABLE01
+0012 120000   F       15     LOOP:   CALL    FLOOK_TABLE
+0015 120000   F       16                     CALL    WLCD_DATA               
+0018 09               17                     INC     R1
+0019 B914F6           18                     CJNE    R1,#20,LOOP
+                      19     
+001C 7900             20                     MOV     R1,#0
+                      21                     
+001E 7AC0             22                     MOV     R2,#0C0H
+0020 120000   F       23                     CALL    WLCD_COMMAND
+0023 900042           24                     MOV     DPTR,#TABLE02
+0026 120000   F       25     LOOP1:  CALL    FLOOK_TABLE
+0029 120000   F       26                     CALL    WLCD_DATA               
+002C 09               27                     INC     R1
+002D B914F6           28                     CJNE    R1,#20,LOOP1
+0030 80FE             29                     JMP     $
+                      30     
+0032 4D435545         31     TABLE01:        DB      "MCUEE is famous "
+0036 45206973                
+003A 2066616D                
+003E 6F757320                
+                      32                     
+0042 64657061         33     TABLE02:        DB      "department      "
+0046 72746D65                
+004A 6E742020                
+004E 20202020                
+                      34             
+                      35             
+                      36     
+                      37     END
+                             
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             12/13/2014 19:00:54 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CLEAR_LCD. . . . .  C ADDR   -----       EXT
+DELAY_01MS . . . .  C ADDR   -----       EXT
+FLOOK_TABLE. . . .  C ADDR   -----       EXT
+LOOP . . . . . . .  C ADDR   0012H   A   
+LOOP1. . . . . . .  C ADDR   0026H   A   
+SET_LCD. . . . . .  C ADDR   -----       EXT
+START. . . . . . .  C ADDR   0002H   A   
+TABLE01. . . . . .  C ADDR   0032H   A   
+TABLE02. . . . . .  C ADDR   0042H   A   
+WLCD_COMMAND . . .  C ADDR   -----       EXT
+WLCD_DATA. . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

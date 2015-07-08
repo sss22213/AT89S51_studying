@@ -1,0 +1,121 @@
+A51 MACRO ASSEMBLER  SET_LCD                                                              12/13/2014 19:03:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN SET_LCD.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE SET_LCD.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-----------------------------------------------
+                       2     ;SET_LCD 
+                       3     ;(1) FUNCTION: Initialize LCD module
+                       4     ;    * FUNCTION SET: DL=0, N=1
+                       5     ;    * DISPLAY ON/OFF: D=1, C=0, B=0
+                       6     ;    * ENTRY MODE SET: I/D=1, S=0      
+                       7     ;(2) INPUT      : None
+                       8     ;(3) OUTPUT     : None
+                       9     ;(4) USE REG.   : R2,R3,R4
+                      10     ;------------------------------------------------  
+                      11     EXTRN           CODE(WLCD_COMMAND)
+                      12     EXTRN           CODE(DELAY_01MS)
+                      13     PUBLIC          SET_LCD
+                      14     ROM                     SEGMENT CODE
+----                  15     RSEG            ROM
+                      16     
+  00A0                17     LCD_BUS         EQU             P2
+  00A2                18     LCD_E           EQU             P2.2
+  00A1                19     LCD_RW          EQU             P2.1
+  00A0                20     LCD_RS          EQU             P2.0
+                      21     
+0000                  22     SET_LCD:
+0000 7C96             23                             MOV             R4,#150
+0002 120000   F       24                             CALL    DELAY_01MS
+                      25     ;(1)
+0005 7A34             26                             MOV             R2,#00110100B
+0007 120000   F       27                             CALL    SET_COMMAND
+                      28     
+000A 7C29             29                             MOV             R4,#41
+000C 120000   F       30                             CALL    DELAY_01MS
+                      31     ;(2)
+000F 7A38             32                             MOV             R2,#00111000B
+0011 120000   F       33                             CALL    SET_COMMAND
+                      34     
+0014 7C0A             35                             MOV             R4,#10
+0016 120000   F       36                             CALL    DELAY_01MS
+                      37     ;(3)
+0019 7A34             38                             MOV             R2,#00110100B
+001B 120000   F       39                             CALL    SET_COMMAND
+                      40     ;(4)
+001E 7A24             41                             MOV             R2,#00100100B
+0020 120000   F       42                             CALL    SET_COMMAND
+                      43     ;(5)
+0023 7A24             44                             MOV             R2,#00100100B
+0025 120000   F       45                             CALL    SET_COMMAND
+                      46     ;(6)
+0028 7A84             47                             MOV             R2,#10000100B
+002A 120000   F       48                             CALL    SET_COMMAND
+                      49     ;(7)
+002D 7A04             50                             MOV             R2,#00000100B
+002F 120000   F       51                             CALL    SET_COMMAND
+                      52     ;(8)
+0032 7A84             53                             MOV             R2,#10000100B
+0034 120000   F       54                             CALL    SET_COMMAND
+                      55     ;(9)
+0037 7A04             56                             MOV             R2,#00000100B
+0039 120000   F       57                             CALL    SET_COMMAND
+                      58     ;(10)
+A51 MACRO ASSEMBLER  SET_LCD                                                              12/13/2014 19:03:18 PAGE     2
+
+003C 7A14             59                             MOV             R2,#00010100B
+003E 120000   F       60                             CALL    SET_COMMAND
+                      61     ;(11)
+0041 7A04             62                             MOV             R2,#00000100B
+0043 120000   F       63                             CALL    SET_COMMAND
+                      64     ;(12)
+0046 7A64             65                             MOV             R2,#01100100B
+0048 120000   F       66                             CALL    SET_COMMAND
+                      67     ;(13)
+004B 7A04             68                             MOV             R2,#00000100B
+004D 120000   F       69                             CALL    SET_COMMAND
+                      70     ;(14)
+0050 7AC4             71                             MOV             R2,#11000100B
+0052 120000   F       72                             CALL    SET_COMMAND
+0055 22               73                             RET
+                      74     
+0056                  75     SET_COMMAND:
+0056 C2A1             76                             CLR             LCD_RW
+0058 C2A0             77                             CLR             LCD_RS
+005A D2A2             78                             SETB    LCD_E
+005C 8AA0             79                             MOV             LCD_BUS,R2
+005E C2A2             80                             CLR             LCD_E
+0060 D2A0             81                             SETB    LCD_RS
+0062 D2A1             82                             SETB    LCD_RW
+0064 7C14             83                             MOV             R4,#20
+0066 120000   F       84                             CALL    DELAY_01MS
+0069 22               85                             RET
+                      86                             END
+A51 MACRO ASSEMBLER  SET_LCD                                                              12/13/2014 19:03:18 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_01MS . . . .  C ADDR   -----       EXT
+LCD_BUS. . . . . .  D ADDR   00A0H   A   
+LCD_E. . . . . . .  B ADDR   00A0H.2 A   
+LCD_RS . . . . . .  B ADDR   00A0H.0 A   
+LCD_RW . . . . . .  B ADDR   00A0H.1 A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+ROM. . . . . . . .  C SEG    006AH       REL=UNIT
+SET_COMMAND. . . .  C ADDR   0056H   R   SEG=ROM
+SET_LCD. . . . . .  C ADDR   0000H   R   SEG=ROM
+WLCD_COMMAND . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

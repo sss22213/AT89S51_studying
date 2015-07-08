@@ -1,0 +1,24 @@
+EXTRN 	CODE(FLOOK_TABLE )
+
+DIP_SW   EQU    P1
+SEVEN    EQU    P2
+
+ORG		00H
+JMP		START
+
+START:	MOV	DPTR,#SEVEN_TABLE
+LOOP:	MOV	P1,#0FFH                  //輸入致能
+		MOV	A, DIP_SW                 //讀入資料
+		XRL		A,#0FFH	              	  //反向
+		MOV	R1,A
+		CALL		FLOOK_TABLE
+		MOV	A,R2 
+		MOV	SEVEN,A
+		JMP		LOOP
+
+SEVEN_TABLE:	
+DB	0C0H,0F9H,0A4H,0B0H,099H,092H,082H,0F8H,080H,098H
+RET
+
+END
+

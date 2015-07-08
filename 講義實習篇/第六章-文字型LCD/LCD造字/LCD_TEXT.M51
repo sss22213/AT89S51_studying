@@ -1,0 +1,256 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/09/2014  21:27:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE LCD_TEXT.obj, .\CLEAR_LCD.obj, .\DELAY_01MS.obj, .\DELAY_10MS.obj, .\SET_LCD.obj, .\WLCD_COMMAN
+>> D.obj, .\WLCD_DATA.obj, .\FLOOK_TABLE.obj TO LCD_TEXT
+
+
+INPUT MODULES INCLUDED:
+  LCD_TEXT.obj (LCD_TEXT)
+  .\CLEAR_LCD.obj (CLEAR_LCD)
+  .\DELAY_01MS.obj (DELAY_01MS)
+  .\DELAY_10MS.obj (DELAY_10MS)
+  .\SET_LCD.obj (SET_LCD)
+  .\WLCD_COMMAND.obj (WLCD_COMMAND)
+  .\WLCD_DATA.obj (WLCD_DATA)
+  .\FLOOK_TABLE.obj (FLOOK_TABLE)
+
+
+LINK MAP OF MODULE:  LCD_TEXT (LCD_TEXT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0044H     ABSOLUTE     
+                    0044H     07BCH                  *** GAP ***
+            CODE    0800H     00F0H     UNIT         ROM
+
+
+
+SYMBOL TABLE OF MODULE:  LCD_TEXT (LCD_TEXT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LCD_TEXT
+  C:0012H         SYMBOL        LOOP
+  C:0002H         SYMBOL        START
+  C:0034H         SYMBOL        TABLE
+  C:0000H         LINE#         4
+  C:0002H         LINE#         7
+  C:0005H         LINE#         8
+  C:0008H         LINE#         9
+  C:000AH         LINE#         10
+  C:000DH         LINE#         12
+  C:000FH         LINE#         13
+  C:0012H         LINE#         14
+  C:0013H         LINE#         15
+  C:0014H         LINE#         16
+  C:0017H         LINE#         17
+  C:001AH         LINE#         18
+  C:001BH         LINE#         20
+  C:001EH         LINE#         22
+  C:0020H         LINE#         23
+  C:0023H         LINE#         25
+  C:0025H         LINE#         26
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/09/2014  21:27:22  PAGE 2
+
+
+  C:0028H         LINE#         28
+  C:002AH         LINE#         29
+  C:002DH         LINE#         31
+  C:002FH         LINE#         32
+  C:0032H         LINE#         33
+  -------         ENDMOD        LCD_TEXT
+
+  -------         MODULE        CLEAR_LCD
+  C:0800H         SEGMENT       ROM
+  C:0800H         PUBLIC        CLEAR_LCD
+  C:0800H         LINE#         15
+  C:0802H         LINE#         16
+  C:0805H         LINE#         17
+  C:0807H         LINE#         18
+  C:080AH         LINE#         19
+  -------         ENDMOD        CLEAR_LCD
+
+  -------         MODULE        DELAY_01MS
+  C:0800H         SEGMENT       ROM
+  C:080BH         PUBLIC        DELAY_01MS
+  C:080BH         LINE#         13
+  C:080DH         LINE#         14
+  C:080EH         LINE#         15
+  C:0810H         LINE#         16
+  C:0812H         LINE#         17
+  -------         ENDMOD        DELAY_01MS
+
+  -------         MODULE        DELAY_10MS
+  C:0800H         SEGMENT       ROM
+  C:0813H         PUBLIC        DELAY_10MS
+  C:0813H         SYMBOL        L_DELAY
+  C:0815H         SYMBOL        S_DELAY
+  C:0813H         LINE#         19
+  C:0815H         LINE#         21
+  C:0817H         LINE#         22
+  C:0819H         LINE#         23
+  C:081BH         LINE#         24
+  C:081DH         LINE#         25
+  -------         ENDMOD        DELAY_10MS
+
+  -------         MODULE        SET_LCD
+  C:0800H         SEGMENT       ROM
+  C:081EH         PUBLIC        SET_LCD
+  D:00A0H         SYMBOL        LCD_BUS
+  B:00A0H.3       SYMBOL        LCD_E
+  B:00A0H.1       SYMBOL        LCD_RS
+  B:00A0H.2       SYMBOL        LCD_RW
+  D:00A0H         SYMBOL        P2
+  C:0874H         SYMBOL        SET_COMMAND
+  C:081EH         LINE#         23
+  C:0820H         LINE#         24
+  C:0823H         LINE#         26
+  C:0825H         LINE#         27
+  C:0828H         LINE#         29
+  C:082AH         LINE#         30
+  C:082DH         LINE#         32
+  C:082FH         LINE#         33
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/09/2014  21:27:22  PAGE 3
+
+
+  C:0832H         LINE#         35
+  C:0834H         LINE#         36
+  C:0837H         LINE#         38
+  C:0839H         LINE#         39
+  C:083CH         LINE#         41
+  C:083EH         LINE#         42
+  C:0841H         LINE#         44
+  C:0843H         LINE#         45
+  C:0846H         LINE#         47
+  C:0848H         LINE#         48
+  C:084BH         LINE#         50
+  C:084DH         LINE#         51
+  C:0850H         LINE#         53
+  C:0852H         LINE#         54
+  C:0855H         LINE#         56
+  C:0857H         LINE#         57
+  C:085AH         LINE#         59
+  C:085CH         LINE#         60
+  C:085FH         LINE#         62
+  C:0861H         LINE#         63
+  C:0864H         LINE#         65
+  C:0866H         LINE#         66
+  C:0869H         LINE#         68
+  C:086BH         LINE#         69
+  C:086EH         LINE#         71
+  C:0870H         LINE#         72
+  C:0873H         LINE#         73
+  C:0874H         LINE#         76
+  C:0876H         LINE#         77
+  C:0878H         LINE#         78
+  C:087AH         LINE#         79
+  C:087CH         LINE#         80
+  C:087EH         LINE#         81
+  C:0880H         LINE#         82
+  C:0882H         LINE#         83
+  C:0884H         LINE#         84
+  C:0887H         LINE#         85
+  -------         ENDMOD        SET_LCD
+
+  -------         MODULE        WLCD_COMMAND
+  C:0800H         SEGMENT       ROM
+  C:0888H         PUBLIC        WLCD_COMMAND
+  D:00A0H         SYMBOL        LCD_BUS
+  B:00A0H.3       SYMBOL        LCD_E
+  B:00A0H.1       SYMBOL        LCD_RS
+  B:00A0H.2       SYMBOL        LCD_RW
+  D:00A0H         SYMBOL        P2
+  C:0888H         LINE#         23
+  C:088AH         LINE#         24
+  C:088CH         LINE#         25
+  C:088EH         LINE#         26
+  C:088FH         LINE#         27
+  C:0891H         LINE#         28
+  C:0893H         LINE#         29
+  C:0895H         LINE#         30
+  C:0897H         LINE#         31
+  C:0899H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/09/2014  21:27:22  PAGE 4
+
+
+  C:089BH         LINE#         33
+  C:089DH         LINE#         34
+  C:08A0H         LINE#         36
+  C:08A2H         LINE#         37
+  C:08A4H         LINE#         38
+  C:08A6H         LINE#         39
+  C:08A7H         LINE#         40
+  C:08A9H         LINE#         41
+  C:08AAH         LINE#         42
+  C:08ACH         LINE#         43
+  C:08AEH         LINE#         44
+  C:08B0H         LINE#         45
+  C:08B2H         LINE#         46
+  C:08B4H         LINE#         47
+  C:08B6H         LINE#         48
+  C:08B9H         LINE#         49
+  -------         ENDMOD        WLCD_COMMAND
+
+  -------         MODULE        WLCD_DATA
+  C:0800H         SEGMENT       ROM
+  C:08BAH         PUBLIC        WLCD_DATA
+  D:00A0H         SYMBOL        LCD_BUS
+  B:00A0H.3       SYMBOL        LCD_E
+  B:00A0H.1       SYMBOL        LCD_RS
+  B:00A0H.2       SYMBOL        LCD_RW
+  D:00A0H         SYMBOL        P2
+  C:08BAH         LINE#         22
+  C:08BCH         LINE#         23
+  C:08BEH         LINE#         24
+  C:08C0H         LINE#         25
+  C:08C1H         LINE#         26
+  C:08C3H         LINE#         27
+  C:08C5H         LINE#         28
+  C:08C7H         LINE#         29
+  C:08C9H         LINE#         30
+  C:08CBH         LINE#         31
+  C:08CDH         LINE#         32
+  C:08CFH         LINE#         33
+  C:08D2H         LINE#         35
+  C:08D4H         LINE#         36
+  C:08D6H         LINE#         37
+  C:08D8H         LINE#         38
+  C:08D9H         LINE#         39
+  C:08DBH         LINE#         40
+  C:08DCH         LINE#         41
+  C:08DEH         LINE#         42
+  C:08E0H         LINE#         43
+  C:08E2H         LINE#         44
+  C:08E4H         LINE#         45
+  C:08E6H         LINE#         46
+  C:08E8H         LINE#         47
+  C:08EBH         LINE#         48
+  -------         ENDMOD        WLCD_DATA
+
+  -------         MODULE        FLOOK_TABLE
+  C:0800H         SEGMENT       ROM
+  C:08ECH         PUBLIC        FLOOK_TABLE
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/09/2014  21:27:22  PAGE 5
+
+
+  C:08ECH         LINE#         13
+  C:08EDH         LINE#         14
+  C:08EEH         LINE#         15
+  C:08EFH         LINE#         16
+  -------         ENDMOD        FLOOK_TABLE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0134H BYTE (15%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=308
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

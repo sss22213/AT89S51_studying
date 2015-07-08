@@ -1,0 +1,80 @@
+A51 MACRO ASSEMBLER  WLCD_DATA                                                            12/13/2014 19:03:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN WLCD_DATA.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE WLCD_DATA.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-----------------------------------------------
+                       2     ;WLCD_DATA 
+                       3     ;(1) FUNCTION: Write LCD DATA to DR
+                       4     ;    * E=1, R/W=0, RS=1
+                       5     ;    * Data -> LCD_BUS  
+                       6     ;    * E=0, R/W=1, RS=1          
+                       7     ;(2) INPUT      : R2    : 41H
+                       8     ;(3) OUTPUT     : None
+                       9     ;(4) USE REG.   : R2,R3,R4
+                      10     ;------------------------------------------------  
+                      11     EXTRN           CODE(DELAY_01MS)        
+                      12     PUBLIC          WLCD_DATA
+                      13     ROM                     SEGMENT CODE
+  00A0                14     LCD_BUS         EQU             P2
+  00A2                15     LCD_E           EQU             P2.2
+  00A1                16     LCD_RW          EQU             P2.1
+  00A0                17     LCD_RS          EQU             P2.0
+                      18     
+----                  19     RSEG            ROM
+0000                  20     WLCD_DATA:
+                      21     ; High 4 bits
+0000 C2A1             22                             CLR             LCD_RW
+0002 D2A0             23                             SETB    LCD_RS
+0004 D2A2             24                             SETB    LCD_E
+0006 EA               25                             MOV     A,R2
+0007 54F0             26                             ANL             A,#0F0H
+0009 2405             27                             ADD             A,#05H
+000B F5A0             28                             MOV             LCD_BUS,A
+000D C2A2             29                             CLR             LCD_E
+000F D2A0             30                             SETB    LCD_RS
+0011 D2A1             31                             SETB    LCD_RW
+0013 7C14             32                             MOV             R4,#20
+0015 120000   F       33                             CALL    DELAY_01MS
+                      34     ; Low 4 bits
+0018 C2A1             35                             CLR             LCD_RW
+001A D2A0             36                             SETB    LCD_RS
+001C D2A2             37                             SETB    LCD_E
+001E EA               38                             MOV     A,R2
+001F 540F             39                             ANL             A,#0FH
+0021 C4               40                             SWAP    A
+0022 2405             41                             ADD             A,#05H
+0024 F5A0             42                             MOV             LCD_BUS,A
+0026 C2A2             43                             CLR             LCD_E
+0028 D2A0             44                             SETB    LCD_RS
+002A D2A1             45                             SETB    LCD_RW
+002C 7C14             46                             MOV             R4,#20
+002E 120000   F       47                             CALL    DELAY_01MS
+0031 22               48                             RET
+                      49                             END
+A51 MACRO ASSEMBLER  WLCD_DATA                                                            12/13/2014 19:03:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_01MS . . . .  C ADDR   -----       EXT
+LCD_BUS. . . . . .  D ADDR   00A0H   A   
+LCD_E. . . . . . .  B ADDR   00A0H.2 A   
+LCD_RS . . . . . .  B ADDR   00A0H.0 A   
+LCD_RW . . . . . .  B ADDR   00A0H.1 A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+ROM. . . . . . . .  C SEG    0032H       REL=UNIT
+WLCD_DATA. . . . .  C ADDR   0000H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

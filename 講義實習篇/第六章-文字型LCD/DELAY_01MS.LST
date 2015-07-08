@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  DELAY_01MS                                                           12/13/2014 19:03:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN DELAY_01MS.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE DELAY_01MS.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-------------------------------------------------------
+                       2     ; DELAY_01MS 
+                       3     ;(1) FUNCTION: Delay R4*0.1ms time
+                       4     ;(2) INPUT   : R4
+                       5     ;(3) OUTPUT  : None?
+                       6     ;(4) USE REG.: R3,R4
+                       7     ;--------------------------------------------------------  
+                       8     PUBLIC          DELAY_01MS
+                       9     ROM             SEGMENT CODE
+                      10     
+----                  11     RSEG            ROM
+0000                  12     DELAY_01MS:
+0000 7B30             13                     MOV             R3,#48
+0002 00               14                     NOP
+0003 DBFE             15                     DJNZ            R3,$
+0005 DCF9             16                     DJNZ            R4,DELAY_01MS
+0007 22               17                     RET
+                      18                     END
+A51 MACRO ASSEMBLER  DELAY_01MS                                                           12/13/2014 19:03:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_01MS . . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    0008H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,58 @@
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             12/13/2014 19:03:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN LCD_TEXT.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD_TEXT.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     EXTRN  CODE(CLEAR_LCD,SET_LCD,WLCD_COMMAND,WLCD_DATA,DELAY_01MS)
+                       2     
+0000                   3     ORG     00H
+0000 8000              4     JMP     START
+                       5     
+                       6     
+0002 120000   F        7     START:  CALL            SET_LCD
+                       8     
+0005 120000   F        9                     CALL            CLEAR_LCD
+                      10     
+0008 7A80             11                     MOV             R2,#80H     
+                      12     
+000A 120000   F       13                     CALL       WLCD_COMMAND
+                      14     
+000D 7A41             15                     MOV             R2,#41H
+                      16     
+000F 120000   F       17                     CALL            WLCD_DATA
+0012 120000   F       18                     CALL            DELAY_01MS      
+                      19     
+0015 7AC0             20                     MOV             R2,#0C0H     
+                      21     
+0017 120000   F       22                     CALL            WLCD_COMMAND
+                      23     
+001A 7A46             24                     MOV             R2,#46H
+                      25     
+001C 120000   F       26                     CALL            WLCD_DATA
+001F 80FE             27                     JMP     $
+                      28     END
+                             
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             12/13/2014 19:03:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CLEAR_LCD. . . . .  C ADDR   -----       EXT
+DELAY_01MS . . . .  C ADDR   -----       EXT
+SET_LCD. . . . . .  C ADDR   -----       EXT
+START. . . . . . .  C ADDR   0002H   A   
+WLCD_COMMAND . . .  C ADDR   -----       EXT
+WLCD_DATA. . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

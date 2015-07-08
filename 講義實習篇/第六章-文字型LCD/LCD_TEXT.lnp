@@ -1,0 +1,8 @@
+"CLEAR_LCD.obj",
+"DELAY_01MS.obj",
+"DELAY_10MS.obj",
+"LCD_TEXT.obj",
+"SET_LCD.obj",
+"WLCD_COMMAND.obj",
+"WLCD_DATA.obj" 
+TO "LCD_TEXT" 

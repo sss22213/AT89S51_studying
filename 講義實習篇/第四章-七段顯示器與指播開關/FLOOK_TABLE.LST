@@ -1,0 +1,37 @@
+A51 MACRO ASSEMBLER  FLOOK_TABLE                                                          08/18/2014 14:31:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN FLOOK_TABLE.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE FLOOK_TABLE.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     PUBLIC         FLOOK_TABLE    ;模組名稱
+                       2     ROM            SEGMENT CODE  ;共享ROM空間
+----                   3     RSEG                 ROM            ;選取可重置的 ROM空間
+                       4     
+0000                   5     FLOOK_TABLE:                     ;模組名稱
+0000 E9                6                                   MOV      A,R1      ;將R1位置的值放在A
+0001 93                7                                   MOVC     A,@A+DPTR  ;將表格內第A(R1)個的數字放於A
+0002 FA                8                                   MOV      R2,A      ;將A的值放在R2
+0003 22                9                       RET                 ;從模組返回
+                      10                                       END                     ;程式結束
+                             
+                             
+A51 MACRO ASSEMBLER  FLOOK_TABLE                                                          08/18/2014 14:31:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FLOOK_TABLE. . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    0004H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

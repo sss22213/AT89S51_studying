@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre>
+<h1>猩ision3 Build Log</h1>
+<h2>Project:</h2>
+C:\Users\bohome\Desktop\DVD_project\講義實習篇\第一,二,三章-LED與七段顯示器基本實驗\1.LED基本實驗\LCD.uv2
+Project File Date:  09/09/2014
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling LCD.ASM...
+linking...
+Program Size: data=8.0 xdata=0 code=27
+"LCD" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling LCD.ASM...
+linking...
+Program Size: data=8.0 xdata=0 code=27
+creating hex file from "LCD"...
+"LCD" - 0 Error(s), 0 Warning(s).

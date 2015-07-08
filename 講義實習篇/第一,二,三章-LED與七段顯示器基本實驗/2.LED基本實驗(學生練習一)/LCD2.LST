@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  LCD2                                                                 09/09/2014 20:24:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN LCD2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD2.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;====================================
+                       2     EXTRN    CODE(DELAY_10MS)
+                       3     EXTRN    CODE(FLOOK_TABLE)
+  00A0                 4     LED      EQU    P2
+                       5     ;=================================
+0000                   6                ORG    00H
+0000 8000              7                         JMP    START
+0002 7900              8     START:    MOV    R1,#00
+0004 7F10              9                         MOV    R7,#16
+0006 900018           10                    MOV    DPTR,#LED_TABLE
+0009 120000   F       11     LOOP_1:  CALL   FLOOK_TABLE
+000C 8AA0             12                         MOV    LED,R2
+000E 7D64             13                         MOV    R5,#100                              ;DELAY 1sec
+0010 120000   F       14                         CALL   DELAY_10MS
+0013 09               15                         INC    R1
+0014 DFF3             16                         DJNZ   R7 ,LOOP_1
+0016 80EA             17                         JMP    START 
+                      18     ;共陽LED 顯示碼TABLE表
+0018                  19     LED_TABLE:
+0018 FEFDFBF7         20                  DB         0FEH,0FDH,0FBH,0F7H,0EFH,0DFH,0BFH,07FH
+001C EFDFBF7F                
+0020 BFDFEFF7         21                  DB         0BFH,0DFH,0EFH,0F7H,0FBH,0FDH,0FEH,0FFH
+0024 FBFDFEFF                
+                      22      END
+A51 MACRO ASSEMBLER  LCD2                                                                 09/09/2014 20:24:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_10MS . . . .  C ADDR   -----       EXT
+FLOOK_TABLE. . . .  C ADDR   -----       EXT
+LED. . . . . . . .  D ADDR   00A0H   A   
+LED_TABLE. . . . .  C ADDR   0018H   A   
+LOOP_1 . . . . . .  C ADDR   0009H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

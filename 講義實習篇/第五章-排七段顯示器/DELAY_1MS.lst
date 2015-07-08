@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  DELAY_1MS                                                            08/20/2014 22:15:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN .\DELAY_1MS.obj
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE ..\公共Lib\DELAY_1MS.ASM SET(SMALL) DEBUG PRINT(.\DELAY_1MS.lst) OBJECT(.\
+                      DELAY_1MS.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     PUBLIC  DELAY_01MS                                                                         
+                                  ;模組名稱
+                       2     ROM     SEGMENT CODE                                                                       
+                                  ;共享ROM空間
+----                   3     RSEG    ROM                                                                                
+                                          ;選取可重置的 ROM空間
+                       4     
+0000                   5     DELAY_01MS: ;模組名稱
+                       6     
+0000                   7     L_DELAY: ;迴圈名稱
+0000 7C01              8                  MOV                R4,#1;將1放入R4位址
+0002                   9     S_DELAY: ;迴圈名稱
+0002 7B0C             10                      MOV            R3,#12;將48放入R3位址
+0004 DBFE             11                      DJNZ           R3,$
+0006 DCFA             12                      DJNZ           R4,S_DELAY
+0008 DDF6             13                      DJNZ           R5,L_DELAY              
+000A 22               14                  RET;從模組返回
+                      15      END;程式結束
+A51 MACRO ASSEMBLER  DELAY_1MS                                                            08/20/2014 22:15:41 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_01MS . . . .  C ADDR   0000H   R   SEG=ROM
+L_DELAY. . . . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    000BH       REL=UNIT
+S_DELAY. . . . . .  C ADDR   0002H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

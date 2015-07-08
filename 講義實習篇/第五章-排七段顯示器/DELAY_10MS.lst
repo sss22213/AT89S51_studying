@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           08/20/2014 22:11:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN .\DELAY_10MS.obj
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE ..\公共Lib\DELAY_10MS.ASM SET(SMALL) DEBUG PRINT(.\DELAY_10MS.lst) OBJECT(
+                      .\DELAY_10MS.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     PUBLIC  DELAY_10_MS                                                             ;模組名稱
+                       2     ROM     SEGMENT CODE                                                                       
+                                  ;共享ROM空間
+----                   3     RSEG    ROM     
+                       4     
+0000 7C19              5     DELAY_10_MS:    MOV     R4,#25 
+0002 7B0A              6     D1:                             MOV     R3,#10   
+0004 7DC8              7     D2:                             MOV     R5,#200   
+0006 DDFE              8                                     DJNZ    R5,$      
+0008 DBFA              9                     DJNZ    R3,D2     
+000A DCF6             10                                     DJNZ    R4,D1    
+000C 22               11                                     RET
+                      12     
+                      13     END
+                                                                     
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           08/20/2014 22:11:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0002H   R   SEG=ROM
+D2 . . . . . . . .  C ADDR   0004H   R   SEG=ROM
+DELAY_10_MS. . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    000DH       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

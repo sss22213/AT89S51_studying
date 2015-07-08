@@ -1,0 +1,72 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/18/2014  14:31:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE SEVEN_fin.obj, FLOOK_TABLE.obj TO SEVEN_fin
+
+
+INPUT MODULES INCLUDED:
+  SEVEN_fin.obj (SEVEN_FIN)
+  FLOOK_TABLE.obj (FLOOK_TABLE)
+
+
+LINK MAP OF MODULE:  SEVEN_fin (SEVEN_FIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0020H     ABSOLUTE     
+                    0020H     07E0H                  *** GAP ***
+            CODE    0800H     0004H     UNIT         ROM
+
+
+
+SYMBOL TABLE OF MODULE:  SEVEN_fin (SEVEN_FIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SEVEN_FIN
+  D:0090H         SYMBOL        DIP_SW
+  C:0005H         SYMBOL        LOOP
+  D:0090H         SYMBOL        P1
+  D:00A0H         SYMBOL        P2
+  D:00A0H         SYMBOL        SEVEN
+  C:0015H         SYMBOL        SEVEN_TABLE
+  C:0002H         SYMBOL        START
+  C:0000H         LINE#         7
+  C:0002H         LINE#         9
+  C:0005H         LINE#         10
+  C:0008H         LINE#         11
+  C:000AH         LINE#         12
+  C:000CH         LINE#         13
+  C:000DH         LINE#         14
+  C:0010H         LINE#         15
+  C:0011H         LINE#         16
+  C:0013H         LINE#         17
+  C:001FH         LINE#         21
+  -------         ENDMOD        SEVEN_FIN
+
+  -------         MODULE        FLOOK_TABLE
+  C:0800H         SEGMENT       ROM
+  C:0800H         PUBLIC        FLOOK_TABLE
+  C:0800H         LINE#         6
+  C:0801H         LINE#         7
+  C:0802H         LINE#         8
+  C:0803H         LINE#         9
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/18/2014  14:31:27  PAGE 2
+
+
+  -------         ENDMOD        FLOOK_TABLE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0024H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=36
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

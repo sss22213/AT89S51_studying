@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  FLOOK_TABLE                                                          09/09/2014 20:24:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN FLOOK_TABLE.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE FLOOK_TABLE.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;----------------------------------------------- --------------------------------
+                       2     ;順向查表 :  index -> code
+                       3     ;輸入索引值     : index(R1),table_name,table address(DPTR)
+                       4     ;輸出索引值     : code(R2)
+                       5     ;使用輸出     : R1,R2
+                       6     ;查表在R1,結果放R2
+                       7     ;----------------------------------------------- --------------------------------
+                       8     PUBLIC         FLOOK_TABLE    ;告訴組譯器FLOOK_TABLE的模組程式是可提供其程式呼叫使用的 
+                       9     ROM            SEGMENT CODE  ;共享ROM空間
+----                  10     RSEG                   ROM            ;選取可重置的 ROM空間
+                      11     
+0000                  12     FLOOK_TABLE:                       ;模組名稱
+0000 E9               13                                MOV      A,R1        ;將R1位置的值放在A
+0001 93               14                                MOVC     A,@A+DPTR  ;將表格內第A(R1)個的數字放於A(查表指令)
+0002 FA               15                                MOV      R2,A        ;將A的值放在R2
+0003 22               16               RET                   ;模組程式返回
+                      17                                END                 ;模組程式結束
+                             
+                             
+A51 MACRO ASSEMBLER  FLOOK_TABLE                                                          09/09/2014 20:24:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FLOOK_TABLE. . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    0004H       REL=UNIT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

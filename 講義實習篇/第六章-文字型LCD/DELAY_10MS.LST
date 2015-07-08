@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           12/13/2014 19:03:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN DELAY_10MS.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE DELAY_10MS.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;===================================
+                       2     ; 延遲10ms
+                       3     ; 功能 : 延遲 R5 *10ms時間
+                       4     ; 輸入 : R5
+                       5     ; 輸出 : 無 ?
+                       6     ; 使用 : R3,R4,R5
+                       7     ;====================================
+                       8     ;DELAY_10MS 
+                       9     ;(1) FUNCTION: Delay R5*10ms time
+                      10     ;(2) INPUT   : R5
+                      11     ;(3) OUTPUT  : None?
+                      12     ;(4) USE REG.: R3, R4 ,R5
+                      13     ;--------------------------------------------------------
+                      14     PUBLIC  DELAY_10MS
+                      15     ROM          SEGMENT  CODE
+----                  16     RSEG         ROM
+0000                  17     DELAY_10MS:
+0000                  18     L_DELAY:
+0000 7C64             19                  MOV                R4,#100
+0002                  20     S_DELAY:
+0002 7B30             21                  MOV                R3,#48
+0004 DBFE             22                  DJNZ               R3,$
+0006 DCFA             23                  DJNZ               R4,S_DELAY
+0008 DDF6             24                  DJNZ               R5,L_DELAY
+000A 22               25                  RET
+                      26                  END        
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           12/13/2014 19:03:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_10MS . . . .  C ADDR   0000H   R   SEG=ROM
+L_DELAY. . . . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    000BH       REL=UNIT
+S_DELAY. . . . . .  C ADDR   0002H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

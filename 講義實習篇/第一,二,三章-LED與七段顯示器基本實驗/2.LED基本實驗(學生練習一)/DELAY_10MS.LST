@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           09/09/2014 20:24:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN DELAY_10MS.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE DELAY_10MS.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     PUBLIC             DELAY_10MS;模組名稱
+                       2     ROM                     SEGMENT CODE;共享ROM空間
+----                   3     RSEG                    ROM;選取可重置的 ROM空間
+                       4     
+0000                   5     DELAY_10MS: ;模組名稱
+0000                   6     L_DELAY: ;迴圈名稱
+0000 7C64              7                  MOV                R4,#100;將100放入R4暫存器
+0002                   8      S_DELAY: ;迴圈名稱
+0002 7B30              9                      MOV            R3,#48;將48放入R3暫存器
+0004 DBFE             10                      DJNZ           R3,$  ;將R3減1，若R3不等於0則原地跳繼續執行指行程式
+0006 DCFA             11                      DJNZ           R4,S_DELAY ;將R4減1，若R4不等於0則跳到S_DELAY這個標記
+0008 DDF6             12                    DJNZ             R5,L_DELAY;將R5減1，若R5不等於0則跳到L_DELAY這個標記       
+                                  
+000A 22               13               RET;返回呼叫指令的下一行指令
+                      14                             END;模組結束
+A51 MACRO ASSEMBLER  DELAY_10MS                                                           09/09/2014 20:24:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_10MS . . . .  C ADDR   0000H   R   SEG=ROM
+L_DELAY. . . . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    000BH       REL=UNIT
+S_DELAY. . . . . .  C ADDR   0002H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

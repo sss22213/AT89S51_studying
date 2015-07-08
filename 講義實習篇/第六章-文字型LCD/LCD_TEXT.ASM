@@ -1,0 +1,29 @@
+EXTRN  CODE(CLEAR_LCD,SET_LCD,WLCD_COMMAND,WLCD_DATA,DELAY_01MS)
+
+ORG	00H
+JMP	START
+
+//呼叫SET_LCD，設置LCD	            
+START:	CALL		SET_LCD
+//呼叫     	CLEAR_LCD，清除LCD	            
+		CALL		CLEAR_LCD
+//設置LCD的位置為80H，第一行第一個位置	
+		MOV		R2,#80H     
+//呼叫WLCD_COMMAND，設置LCD位置	    
+		CALL	   WLCD_COMMAND
+//設置LCD ASCII的41H位置資料"A"	
+		MOV		R2,#41H
+//呼叫WLCD_DATA，顯示資料於LCD上	
+		CALL		WLCD_DATA
+		CALL		DELAY_01MS	
+//設置LCD的位置為C0H，第二行第一個位置	
+		MOV		R2,#0C0H     
+//呼叫WLCD_COMMAND，設置LCD位置		
+		CALL		WLCD_COMMAND
+//設置LCD ASCII的46H位置資料"F"
+		MOV		R2,#46H
+//呼叫WLCD_DATA，顯示資料於LCD上
+		CALL		WLCD_DATA
+		JMP	$
+END
+

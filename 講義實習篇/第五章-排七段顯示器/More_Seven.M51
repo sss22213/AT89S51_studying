@@ -1,0 +1,89 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/06/2014  19:01:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE More_Seven.obj, .\FLOOK_TABLE.obj TO More_Seven
+
+
+INPUT MODULES INCLUDED:
+  More_Seven.obj (MORE_SEVEN)
+  .\FLOOK_TABLE.obj (FLOOK_TABLE)
+
+
+LINK MAP OF MODULE:  More_Seven (MORE_SEVEN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0040H     ABSOLUTE     
+                    0040H     07C0H                  *** GAP ***
+            CODE    0800H     0004H     UNIT         ROM
+
+
+
+SYMBOL TABLE OF MODULE:  More_Seven (MORE_SEVEN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MORE_SEVEN
+  D:00A8H         SYMBOL        IE
+  C:0033H         SYMBOL        INITIAL_TIMER1
+  C:0020H         SYMBOL        LOOP1
+  D:00A0H         SYMBOL        P2
+  C:002EH         SYMBOL        SEVEN_CODE
+  C:000DH         SYMBOL        START
+  C:003CH         SYMBOL        TABLE
+  D:008CH         SYMBOL        TH0
+  C:0024H         SYMBOL        TIMER_ISR
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         3
+  C:000BH         LINE#         5
+  C:000DH         LINE#         8
+  C:0010H         LINE#         9
+  C:0012H         LINE#         10
+  C:0015H         LINE#         11
+  C:0018H         LINE#         12
+  C:001BH         LINE#         13
+  C:001EH         LINE#         14
+  C:0020H         LINE#         16
+  C:0022H         LINE#         17
+  C:0024H         LINE#         20
+  C:0026H         LINE#         21
+  C:0027H         LINE#         22
+  C:002AH         LINE#         23
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2014  19:01:19  PAGE 2
+
+
+  C:002CH         LINE#         24
+  C:002EH         LINE#         27
+  C:0031H         LINE#         28
+  C:0032H         LINE#         29
+  C:0033H         LINE#         32
+  C:0036H         LINE#         33
+  C:0039H         LINE#         34
+  C:003BH         LINE#         35
+  -------         ENDMOD        MORE_SEVEN
+
+  -------         MODULE        FLOOK_TABLE
+  C:0800H         SEGMENT       ROM
+  C:0800H         PUBLIC        FLOOK_TABLE
+  C:0800H         LINE#         13
+  C:0801H         LINE#         14
+  C:0802H         LINE#         15
+  C:0803H         LINE#         16
+  -------         ENDMOD        FLOOK_TABLE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003BH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=68
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

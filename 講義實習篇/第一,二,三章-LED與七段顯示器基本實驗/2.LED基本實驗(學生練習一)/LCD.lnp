@@ -1,0 +1,4 @@
+"LCD2.obj",
+"DELAY_10MS.obj",
+"FLOOK_TABLE.obj" 
+TO "LCD" 

@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  CLEAR_LCD                                                            12/13/2014 19:03:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN CLEAR_LCD.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE CLEAR_LCD.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;------------------------------------------------------------------------
+                       2     ;CLEAR_LCD 
+                       3     ;(1) FUNCTION: DISPLAY CLEAR / CURSOR HOME
+                       4     ;(2) INPUT      : None
+                       5     ;(3) OUTPUT     : None
+                       6     ;(4) USE REG.   : R2,R3,R4
+                       7     ;-------------------------------------------------------------------------  
+                       8     EXTRN           CODE(WLCD_COMMAND)
+                       9     PUBLIC          CLEAR_LCD
+                      10     ROM                     SEGMENT CODE
+                      11     
+----                  12     RSEG            ROM
+                      13     
+0000                  14     CLEAR_LCD:
+0000 7A01             15                             MOV             R2,#00000001B
+0002 120000   F       16                             CALL    WLCD_COMMAND
+0005 7A02             17                             MOV             R2,#00000010B
+0007 120000   F       18                             CALL    WLCD_COMMAND
+000A 22               19                             RET
+                      20     END
+A51 MACRO ASSEMBLER  CLEAR_LCD                                                            12/13/2014 19:03:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CLEAR_LCD. . . . .  C ADDR   0000H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    000BH       REL=UNIT
+WLCD_COMMAND . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

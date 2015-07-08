@@ -1,0 +1,74 @@
+A51 MACRO ASSEMBLER  SEVEN                                                                08/20/2014 21:54:51 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN SEVEN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE SEVEN.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG     00H
+0000 800B              2     JMP     START
+000B                   3     ORG     0BH
+000B 8020              4     JMP     TIMER_1S
+                       5     
+000D 900040            6     START:  MOV     DPTR,#TABLE
+0010 7814              7             MOV     R0,#20
+0012 7900              8             MOV     R1,#0
+0014 758901            9             MOV     TMOD,#00000001B
+0017 853C8C           10             MOV TH0,high(65536-50000)    
+001A 85B08A           11             MOV TL0,low(65536-50000)    
+001D 75A882           12             MOV IE,#10000010B       
+0020 D28C             13             SETB    TR0           
+0022 E9               14     LOOP:MOV        A,R1
+0023 93               15          MOVC       A,@A+DPTR
+0024 F5A0             16          MOV        P2,A
+0026 B90AF9           17          CJNE       R1,#10,LOOP
+0029 7900             18          MOV        R1,#0
+002B 80F5             19          JMP        LOOP               
+                      20     
+002D D80A             21     TIMER_1S:       DJNZ    R0,TIMER1   
+002F C28C             22                     CLR     TR0      
+0031 1139             23                 CALL        TIMER1   
+0033 09               24                     INC     R1
+0034 7814             25                             MOV     R0,#20
+0036 D28C             26                             SETB    TR0                  
+0038 32               27                             RETI
+                      28     
+                      29     
+0039 853C8C           30     TIMER1: MOV     TH0,high(65536-50000)    
+003C 85B08A           31             MOV     TL0,low(65536-50000)    
+003F 32               32             RETI
+                      33     
+0040                  34     TABLE:     
+0040 C0F9A4B0         35     DB   0C0H,0F9H,0A4H,0B0H,099H,092H,082H,0F8H,080H,098H 
+0044 999282F8                
+0048 8098                    
+                      36     END
+                             
+                             
+A51 MACRO ASSEMBLER  SEVEN                                                                08/20/2014 21:54:51 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+LOOP . . . . . . .  C ADDR   0022H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   000DH   A   
+TABLE. . . . . . .  C ADDR   0040H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER1 . . . . . .  C ADDR   0039H   A   
+TIMER_1S . . . . .  C ADDR   002DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

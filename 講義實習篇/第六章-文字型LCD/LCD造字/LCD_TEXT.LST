@@ -1,0 +1,75 @@
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             09/09/2014 21:27:21 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN LCD_TEXT.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD_TEXT.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     EXTRN  CODE(CLEAR_LCD,SET_LCD,WLCD_COMMAND,WLCD_DATA,DELAY_01MS,FLOOK_TABLE)
+                       2     
+0000                   3     ORG     00H
+0000 8000              4     JMP     START
+                       5     
+                       6             
+0002 120000   F        7     START:  CALL            SET_LCD    
+0005 120000   F        8                     CALL            CLEAR_LCD
+0008 7800              9                     MOV     R0,#0
+000A 900034           10                     MOV     DPTR,#TABLE
+                      11                     
+000D 7A40             12                     MOV     R2,#01000000B
+000F 120000   F       13                     CALL       WLCD_COMMAND
+0012 E8               14     LOOP:   MOV     A,R0
+0013 F9               15                     MOV     R1,A
+0014 120000   F       16                     CALL    FLOOK_TABLE
+0017 120000   F       17                     CALL    WLCD_DATA
+001A 08               18                     INC R0
+                      19                     
+001B B810F4           20                     CJNE    R0,#16,LOOP
+                      21                     
+001E 7A80             22                     MOV     R2,#080H
+0020 120000   F       23                     CALL       WLCD_COMMAND
+                      24                     
+0023 7A00             25                     MOV     R2,#000H
+0025 120000   F       26                     CALL       WLCD_DATA
+                      27                     
+0028 7A81             28                     MOV     R2,#081H
+002A 120000   F       29                     CALL       WLCD_COMMAND
+                      30                     
+002D 7A01             31                     MOV     R2,#001H
+002F 120000   F       32                     CALL       WLCD_DATA                    
+0032 80FE             33                     JMP     $
+                      34     
+0034 0A0A1104         35     TABLE:  DB      00AH,00AH,011H,004H,008H,012H,01FH,000H
+0038 08121F00                
+003C 0E001F0A         36                     DB      00EH,000H,01FH,00AH,00AH,00AH,011H,000H
+0040 0A0A1100                
+                      37             
+                      38             
+                      39     
+                      40     END
+                             
+A51 MACRO ASSEMBLER  LCD_TEXT                                                             09/09/2014 21:27:21 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CLEAR_LCD. . . . .  C ADDR   -----       EXT
+DELAY_01MS . . . .  C ADDR   -----       EXT
+FLOOK_TABLE. . . .  C ADDR   -----       EXT
+LOOP . . . . . . .  C ADDR   0012H   A   
+SET_LCD. . . . . .  C ADDR   -----       EXT
+START. . . . . . .  C ADDR   0002H   A   
+TABLE. . . . . . .  C ADDR   0034H   A   
+WLCD_COMMAND . . .  C ADDR   -----       EXT
+WLCD_DATA. . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,89 @@
+A51 MACRO ASSEMBLER  KEYBOARD_SEVEN__FUNTION                                              09/15/2014 21:10:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN keyBoard_Seven _funtion.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE keyBoard_Seven _funtion.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     PUBLIC                  DELAY
+                       2     PUBLIC                  KEY
+                       3     PUBLIC                  SEVEN
+                       4     
+                       5     ROM                             SEGMENT CODE
+----                   6     RSEG                            ROM
+                       7     
+                       8     
+0000 7C0A              9     DELAY:          MOV     R4,#10   
+0002 7B0A             10     D1:                        MOV  R3,#10   
+0004 7DC8             11     D2:                        MOV  R5,#200   
+0006 DDFE             12                                DJNZ R5,$      
+0008 DBFA             13                  DJNZ       R3,D2     
+000A DCF6             14                                DJNZ         R4,D1    
+000C 22               15                                RET
+                      16     
+                      17     
+                      18     
+                      19     
+000D 7F00             20     KEY:      MOV    R7,#00
+000F 900000   F       21                       MOV    DPTR,#TABLE_KEY
+0012 EF               22     LOOP:     MOV    A,R7
+0013 93               23                       MOVC   A,@A+DPTR
+0014 6E               24                       XRL       A,R6
+0015 0F               25                       INC       R7
+0016 BF0B0A           26                       CJNE   R7,#11,YES  ;避免按到七段沒有的碼
+0019 7F0B             27                       MOV    R7,#11
+001B 22               28                       RET
+                      29     ;七段顯示器順向查表
+001C 900000   F       30     SEVEN:   MOV    DPTR,#TABLE_SEVEN
+001F 1F               31                         DEC R7
+0020 EF               32                         MOV A,R7
+0021 93               33                         MOVC        A,@A+DPTR
+0022 22               34                         RET
+                      35                                     
+0023 70ED             36     YES:     JNZ     LOOP
+0025 22               37                      RET    
+                      38     
+                      39                     
+                      40     ;鍵盤編碼
+0026                  41     TABLE_KEY:      
+0026 777B7DB7         42     DB 077H,07BH,07DH,0B7H,0BBH,0BDH,0D7H,0DBH,0DDH,0EBH
+002A BBBDD7DB                
+002E DDEB                    
+                      43     
+                      44     
+                      45     ;七段顯示器編碼
+0030                  46     TABLE_SEVEN:    
+0030 F9A4B099         47     DB      0F9H,0A4H,0B0H,099H,092H,082H,0F8H,080H,098H,0C0H
+0034 9282F880                
+0038 98C0                    
+003A 86               48     DB      086H ;ERROR的符號               
+                      49     
+                      50     
+                      51     
+                      52     END     
+A51 MACRO ASSEMBLER  KEYBOARD_SEVEN__FUNTION                                              09/15/2014 21:10:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0002H   R   SEG=ROM
+D2 . . . . . . . .  C ADDR   0004H   R   SEG=ROM
+DELAY. . . . . . .  C ADDR   0000H   R   SEG=ROM
+KEY. . . . . . . .  C ADDR   000DH   R   SEG=ROM
+LOOP . . . . . . .  C ADDR   0012H   R   SEG=ROM
+ROM. . . . . . . .  C SEG    003BH       REL=UNIT
+SEVEN. . . . . . .  C ADDR   001CH   R   SEG=ROM
+TABLE_KEY. . . . .  C ADDR   0026H   R   SEG=ROM
+TABLE_SEVEN. . . .  C ADDR   0030H   R   SEG=ROM
+YES. . . . . . . .  C ADDR   0023H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,84 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/09/2014  20:24:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE LCD2.obj, DELAY_10MS.obj, FLOOK_TABLE.obj TO LCD
+
+
+INPUT MODULES INCLUDED:
+  LCD2.obj (LCD2)
+  DELAY_10MS.obj (DELAY_10MS)
+  FLOOK_TABLE.obj (FLOOK_TABLE)
+
+
+LINK MAP OF MODULE:  LCD (LCD2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0028H     ABSOLUTE     
+                    0028H     07D8H                  *** GAP ***
+            CODE    0800H     000FH     UNIT         ROM
+
+
+
+SYMBOL TABLE OF MODULE:  LCD (LCD2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LCD2
+  D:00A0H         SYMBOL        LED
+  C:0018H         SYMBOL        LED_TABLE
+  C:0009H         SYMBOL        LOOP_1
+  D:00A0H         SYMBOL        P2
+  C:0002H         SYMBOL        START
+  C:0000H         LINE#         7
+  C:0002H         LINE#         8
+  C:0004H         LINE#         9
+  C:0006H         LINE#         10
+  C:0009H         LINE#         11
+  C:000CH         LINE#         12
+  C:000EH         LINE#         13
+  C:0010H         LINE#         14
+  C:0013H         LINE#         15
+  C:0014H         LINE#         16
+  C:0016H         LINE#         17
+  -------         ENDMOD        LCD2
+
+  -------         MODULE        DELAY_10MS
+  C:0800H         SEGMENT       ROM
+  C:0800H         PUBLIC        DELAY_10MS
+  C:0800H         SYMBOL        L_DELAY
+  C:0802H         SYMBOL        S_DELAY
+  C:0800H         LINE#         7
+  C:0802H         LINE#         9
+  C:0804H         LINE#         10
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/09/2014  20:24:37  PAGE 2
+
+
+  C:0806H         LINE#         11
+  C:0808H         LINE#         12
+  C:080AH         LINE#         13
+  -------         ENDMOD        DELAY_10MS
+
+  -------         MODULE        FLOOK_TABLE
+  C:0800H         SEGMENT       ROM
+  C:080BH         PUBLIC        FLOOK_TABLE
+  C:080BH         LINE#         13
+  C:080CH         LINE#         14
+  C:080DH         LINE#         15
+  C:080EH         LINE#         16
+  -------         ENDMOD        FLOOK_TABLE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0037H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=55
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

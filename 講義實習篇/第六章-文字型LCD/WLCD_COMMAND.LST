@@ -1,0 +1,81 @@
+A51 MACRO ASSEMBLER  WLCD_COMMAND                                                         12/13/2014 19:03:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN WLCD_COMMAND.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE WLCD_COMMAND.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-------------------------------------------------------------
+                       2     ;WLCD_COMMAND 
+                       3     ;(1) FUNCTION: Write LCD command to IR
+                       4     ;    * E=1, R/W=0, RS=0
+                       5     ;    * Command -> LCD_BUS       
+                       6     ;    * E=0, R/W=1, RS=1          
+                       7     ;(2) INPUT   : R2  ....  82H
+                       8     ;(3) OUTPUT  : None
+                       9     ;(4) USE REG.: R2,R3,R4
+                      10     ;---------------------------------------------------------------  
+                      11     EXTRN           CODE(DELAY_01MS)        
+                      12     PUBLIC          WLCD_COMMAND
+                      13     ROM                     SEGMENT CODE
+  00A0                14     LCD_BUS         EQU             P2
+  00A2                15     LCD_E           EQU             P2.2
+  00A1                16     LCD_RW          EQU             P2.1
+  00A0                17     LCD_RS          EQU             P2.0
+                      18     
+----                  19     RSEG            ROM
+                      20     
+0000                  21     WLCD_COMMAND:
+                      22     ; High 4 bits
+0000 C2A1             23                             CLR             LCD_RW
+0002 C2A0             24                             CLR             LCD_RS
+0004 D2A2             25                             SETB    LCD_E
+0006 EA               26                             MOV     A,R2
+0007 54F0             27                             ANL             A,#0F0H                 ;A=80H
+0009 2404             28                             ADD             A,#04H                  ;A=04H
+000B F5A0             29                             MOV             LCD_BUS,A
+000D C2A2             30                             CLR             LCD_E
+000F D2A0             31                             SETB    LCD_RS
+0011 D2A1             32                             SETB    LCD_RW
+0013 7C14             33                             MOV             R4,#20
+0015 120000   F       34                             CALL    DELAY_01MS
+                      35     ; Low 4 bits
+0018 C2A1             36                             CLR             LCD_RW
+001A C2A0             37                             CLR             LCD_RS
+001C D2A2             38                             SETB    LCD_E
+001E EA               39                             MOV     A,R2           ;82H
+001F 540F             40                             ANL             A,#0FH         ;A=02H 
+0021 C4               41                             SWAP    A              ;A=20H 
+0022 2404             42                             ADD             A,#04H         ;A=28H
+0024 F5A0             43                             MOV             LCD_BUS,A
+0026 C2A2             44                             CLR             LCD_E
+0028 D2A0             45                             SETB    LCD_RS
+002A D2A1             46                             SETB    LCD_RW
+002C 7C14             47                             MOV             R4,#20
+002E 120000   F       48                             CALL    DELAY_01MS
+0031 22               49                             RET
+                      50                             END
+A51 MACRO ASSEMBLER  WLCD_COMMAND                                                         12/13/2014 19:03:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_01MS . . . .  C ADDR   -----       EXT
+LCD_BUS. . . . . .  D ADDR   00A0H   A   
+LCD_E. . . . . . .  B ADDR   00A0H.2 A   
+LCD_RS . . . . . .  B ADDR   00A0H.0 A   
+LCD_RW . . . . . .  B ADDR   00A0H.1 A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+ROM. . . . . . . .  C SEG    0032H       REL=UNIT
+WLCD_COMMAND . . .  C ADDR   0000H   R   SEG=ROM
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

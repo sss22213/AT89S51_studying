@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  MORE_SEVEN                                                           09/06/2014 19:01:19 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN More_Seven.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE More_Seven.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     EXTRN    CODE(FLOOK_TABLE)
+0000                   2     ORG             00H
+0000 800B              3     JMP             START
+000B                   4     ORG             0BH
+000B 8017              5     JMP             TIMER_ISR
+                       6     
+                       7     
+000D 90003C            8     START:  MOV     DPTR,#TABLE
+0010 7900              9                     MOV     R1,#00
+0012 758901           10                     MOV     TMOD,#00000001B
+0015 85FF8C           11                     MOV     TH0,high(65536-100)
+0018 859C8A           12                     MOV     TL0,low(65536-100)              
+001B 75A882           13                     MOV     IE,#10000010B
+001E D28C             14                     SETB    TR0
+                      15                             
+0020 8BA0             16     LOOP1:  MOV     P2,R3                                   
+0022 80FC             17                     JMP     LOOP1   
+                      18     
+                      19     
+0024 C28C             20     TIMER_ISR:              CLR     TR0      
+0026 09               21                                     INC     R1              
+0027 B90404           22                                     CJNE    R1,#4,SEVEN_CODE         
+002A 79FF             23                                     MOV     R1,#-1                           
+002C 8005             24                                     JMP     Initial_Timer1
+                      25     
+                      26     
+002E 120000   F       27     SEVEN_CODE:                     CALL    FLOOK_TABLE     
+0031 EA               28                                             MOV     A,R2
+0032 FB               29                                             MOV     R3,A    
+                      30                                     
+                      31     
+0033 85FF8C           32     Initial_Timer1:         MOV     TH0,high(65536-100)
+0036 859C8A           33                                             MOV     TL0,low(65536-100)
+0039 D28C             34                                             SETB    TR0                                     
+003B 32               35                                             RETI    
+                      36     
+003C 8192A3B4         37     TABLE:          DB      081H,092H,0A3H,0B4H
+                      38                                     
+                      39     
+                      40             
+                      41     END
+                             
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  MORE_SEVEN                                                           09/06/2014 19:01:19 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FLOOK_TABLE. . . .  C ADDR   -----       EXT
+IE . . . . . . . .  D ADDR   00A8H   A   
+INITIAL_TIMER1 . .  C ADDR   0033H   A   
+LOOP1. . . . . . .  C ADDR   0020H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SEVEN_CODE . . . .  C ADDR   002EH   A   
+START. . . . . . .  C ADDR   000DH   A   
+TABLE. . . . . . .  C ADDR   003CH   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER_ISR. . . . .  C ADDR   0024H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  LCD                                                                  09/09/2014 20:20:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN LCD.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG     00H
+0000 8000              2     JMP             START
+0002 75A000            3     START:  MOV     P2,#00H
+0005 110E              4                     CALL    DELAY_1S
+0007 75A0FF            5                     MOV     P2,#0FFH
+000A 110E              6                     CALL    DELAY_1S
+000C 80F4              7                     JMP             START
+                       8     
+000E 7CFA              9     DELAY_1S:       MOV     R4,#250  
+0010 7B0A             10     D1:                     MOV     R3,#10   
+0012 7DC8             11     D2:                     MOV     R5,#200   
+0014 DDFE             12                             DJNZ    R5,$      
+0016 DBFA             13                 DJNZ        R3,D2     
+0018 DCF6             14                             DJNZ    R4,D1    
+001A 22               15                             RET
+                      16     END
+                             
+A51 MACRO ASSEMBLER  LCD                                                                  09/09/2014 20:20:50 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0010H   A   
+D2 . . . . . . . .  C ADDR   0012H   A   
+DELAY_1S . . . . .  C ADDR   000EH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

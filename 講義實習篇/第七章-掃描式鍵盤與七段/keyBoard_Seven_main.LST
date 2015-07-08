@@ -1,0 +1,81 @@
+A51 MACRO ASSEMBLER  KEYBOARD_SEVEN_MAIN                                                  09/15/2014 21:10:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN keyBoard_Seven_main.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE keyBoard_Seven_main.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG     00H
+0000 8000              2     JMP     SCAN_KEYBOARD
+                       3     EXTRN  CODE(DELAY,KEY,SEVEN)
+                       4     
+  00A0                 5     KEY_PORT        EQU     P2
+                       6     
+0002 75A0FF            7     SCAN_KEYBOARD:  MOV     KEY_PORT,#0FFH   ;輸入致能
+0005 7580FF            8                                     MOV     P0,#0FFH                
+0008 75A0F0            9                                     MOV     KEY_PORT,#11110000B
+000B E5A0             10                     MOV     A,KEY_PORT
+000D 64F0             11                     XRL     A,#11110000B
+000F 70F1             12                     JNZ     SCAN_KEYBOARD           
+                      13                                     ;按鍵是否鬆開，如果沒鬆開就反覆跑
+0011 7A7F             14     SCAN_4:         MOV     R2,#7FH
+0013 7904             15                         MOV     R1,#04H
+                      16                        ;掃描參數    
+0015 EA               17     SCAN_3:         MOV     A,R2
+0016 23               18                         RL          A
+                      19                             ;輸出掃描值，然後讀入返回值
+0017 75A0FF           20                        MOV  KEY_PORT,#0FFH  ;輸入致能
+001A F5A0             21                        MOV          KEY_PORT,A
+001C FA               22                MOV          R2,A
+001D E5A0             23                        MOV          A,KEY_PORT
+001F FE               24                        MOV  R6,A
+                      25                     ;如果沒掃到就再掃瞄
+0020 6A               26                       XRL   A,R2
+0021 600F             27               JZ    SCAN_UN
+                      28     ;解彈跳
+0023 7CC8             29                       MOV           R4,#200
+0025 120000   F       30               CALL          DELAY
+                      31                             ;查表
+0028 120000   F       32                       CALL  KEY
+002B 120000   F       33                       CALL  SEVEN
+                      34                             ;顯示在七段顯示器上
+002E F580             35                       MOV   P0,A
+0030 80E3             36                       JMP   SCAN_3  
+                      37                             
+                      38     
+                      39     
+0032 D9E1             40     SCAN_UN:           DJNZ R1,SCAN_3
+0034 80DB             41                                JMP  SCAN_4
+0036 22               42                                RET  
+                      43     
+                      44                                     
+                      45     
+                      46     
+                      47     
+                      48     END
+A51 MACRO ASSEMBLER  KEYBOARD_SEVEN_MAIN                                                  09/15/2014 21:10:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   -----       EXT
+KEY. . . . . . . .  C ADDR   -----       EXT
+KEY_PORT . . . . .  D ADDR   00A0H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SCAN_3 . . . . . .  C ADDR   0015H   A   
+SCAN_4 . . . . . .  C ADDR   0011H   A   
+SCAN_KEYBOARD. . .  C ADDR   0002H   A   
+SCAN_UN. . . . . .  C ADDR   0032H   A   
+SEVEN. . . . . . .  C ADDR   -----       EXT
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

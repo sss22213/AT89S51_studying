@@ -1,0 +1,9 @@
+"LCD_TEXT.obj",
+".\CLEAR_LCD.obj",
+".\DELAY_01MS.obj",
+".\DELAY_10MS.obj",
+".\SET_LCD.obj",
+".\WLCD_COMMAND.obj",
+".\WLCD_DATA.obj",
+".\FLOOK_TABLE.obj" 
+TO "LCD_TEXT" 
